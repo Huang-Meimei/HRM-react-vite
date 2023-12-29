@@ -1,28 +1,45 @@
 import React, { Component } from 'react'
-import {Form, Input, Button, Checkbox,Row,Col} from 'antd';
+import {Form, Input, Button,Row,Col, message} from 'antd';
 import {UserOutlined, LockOutlined} from '@ant-design/icons'
-import { validate_password } from '../../utils/validate';
-import { login,getUsers } from '../../api/account';
+import { validate_email, validate_password } from '../../utils/validate';
+import { login,getUsers ,getCode} from '../../api/account';
+import Code from '../../components/code/index'
+import { encrypt_pw } from '../../utils/encrypt';
+
 
 export default class LoginForm extends Component {
 
-    getUsers=()=>{
-        getUsers().then(res=>{
-            console.log(res)
-        }).catch(err=>{
-            console.log(err)
-        })
+    constructor(){
+        super();
+        this.state={
+            username:"",
+            email:"",
+            password:"",
+            code:""
+        }
     }
+
+
+    // inputChange=(e)=>{
+    //     let value = e.target.value
+    //     console.log(value)
+    //     this.setState({...this.state,username:value})
+    // }
 
     onFinish = values =>{
         console.log("receive values from inputs ",values)
         const payload = {
             "email":values.email,
-            "password":values.password
+            "password":encrypt_pw(values.password),
+            "code":values.code,
         }
         console.log(payload)
         login(payload).then(response=>{
             console.log(response)
+            message.success("Log In Success!")
+            if(response.data.resCode ===0){
+                
+            }
         }).catch(err=>{
             console.log(err)
         })
@@ -32,6 +49,8 @@ export default class LoginForm extends Component {
         this.props.switchForm("register")
     }
   render() {
+    const {email} = this.state;
+    const _this = this;
     return (
         <>
         <div className='form-header'>
@@ -52,9 +71,18 @@ export default class LoginForm extends Component {
                     {
                         type:"email",
                         message:"Incorrect email format!"
-                    }
+                    },
+                    ({getFieldValue})=>({
+                        validator(rule,value){
+                            if (validate_email(value)){
+                                _this.setState({..._this.state,email:value})
+                                return Promise.resolve();
+                            }
+                            return Promise.reject("Please enter an email in correct format!");
+                        }
+                    })
                 ]}>
-                <Input prefix={<UserOutlined className='site-form-item-icon'></UserOutlined>} placeholder='Email'></Input>
+                <Input prefix={<UserOutlined className='site-form-item-icon'></UserOutlined>} placeholder='Email' ></Input>
             </Form.Item>
             <Form.Item name='password' rules={
                 [
@@ -77,7 +105,7 @@ export default class LoginForm extends Component {
                     // })
                 ]
                 }>
-                <Input prefix={<LockOutlined className='site-form-item-icon'></LockOutlined>} placeholder='Password'></Input>
+                <Input prefix={<LockOutlined className='site-form-item-icon'></LockOutlined>} placeholder='Password' ></Input>
             </Form.Item>
             <Form.Item name='code' rules={
                 [
@@ -90,9 +118,8 @@ export default class LoginForm extends Component {
                         <Input  placeholder='Verification Code'></Input>
                     </Col>
                     <Col span={8}>
-                        <Button block type="primary" danger>
-                            Get Code
-                        </Button>
+                        
+                        <Code data={email} dataType={"email"} module={"login"}></Code>
                     </Col>
                 </Row>
             </Form.Item>

@@ -7,11 +7,15 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:dev": "dotenv -e .env.development react-app-rewired build",
+    "build:pro": "dotenv -e .env.production react-app-rewired build",
+    "build:test": "dotenv -e .env.test react-app-rewired build"
   },
   "dependencies": {
     "antd": "^5.12.5",
     "axios": "^1.6.2",
+    "crypto-js": "^4.2.0",
     "http-proxy-middleware": "^2.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

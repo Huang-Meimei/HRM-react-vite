@@ -8,16 +8,15 @@ import vitePluginImp from 'vite-plugin-imp'
 export default defineConfig({
   server:{
     cors:true,
-
     proxy:{
      
       
       //"/dev/users/login":"localhost:3000/api/users/login",
-      '/api':{
-        target:"http://127.0.0.1:3000",
+      '/dev':{
+        target:"http://127.0.0.1:3000/",
         changeOrigin:true,
         
-        //rewrite: (path) => path.replace(/^\/api/, ''),
+        rewrite: (path) => path.replace(/^\/dev/, ''),
       }
     }
   },
@@ -33,6 +32,7 @@ export default defineConfig({
       ]
     })
   ],
+  envPrefix:"REACT_",
   resolve: {
     alias: {
       '@':  path.resolve(__dirname, './src')
