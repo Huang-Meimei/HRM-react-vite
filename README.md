@@ -1,6 +1,8 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This template provides a minimal setup to get React working in Vite with some ESLint rules.
+
+It faciliates the log-in/-out components with code verification from back-end and components with svg-animated logos.
 
 Currently, two official plugins are available:
 
