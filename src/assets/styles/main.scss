@@ -1,5 +1,108 @@
 @import "./normalize.scss";
+@import url('https://fonts.font.im/css?family=Monoton');
 
 
-$color: red
+
+$color: rgba(0, 0, 0, 0.608);
+
+button {
+    width: 7rem;
+    height: 2.2rem;
+    border: .05rem solid black;
+    border-radius: .3rem;
+    font-size: small;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    margin: 0;
+    padding: .3rem .1rem;
+    .button-icon { 
+        position: relative;
+        line-height: 70%;
+        right: -.03rem;
+        top: .1rem;        
+        svg{
+            width: 2.2rem;
+            height: 2.2rem;
+        } 
+
+    }
+    &.primary {
+        background-color: transparent;
+        svg {
+            path.theme {
+                transform-origin: 50% 50%;
+                stroke-dasharray: 4000 ;
+                stroke-width: 40;
+                animation: stroke_fill_primary 4s  ease-in-out infinite;                    
+            }
+            @keyframes stroke_fill_primary {
+                0% {
+                    stroke-dashoffset: 0;
+                    fill:wheat;
+                    stroke:rgb(16, 192, 198);
+                }
+                35% {
+                    stroke-dashoffset: -7900;
+                    fill: rgb(16, 192, 198);
+                    stroke:wheat;
+                } 
+                100% {
+                    stroke-dashoffset: -8000;
+                    fill:wheat;
+                    stroke:rgb(16, 192, 198);
+                }                
+            }
+
+
+
+        }
+
+    }
+    &.prominent {
+        background-color: lightcoral;
+        border: .01rem ridge pink;
+        transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+        &:hover{
+            box-shadow: 0 0  .5rem .1rem rgb(245, 163, 190);
+        }  
+        svg{
+            path {
+                transform-origin: 50% 50%;
+                stroke-dasharray: 3000 ;
+                stroke-width: 40;
+                animation: stroke_fill_prominent 4s ease-in-out infinite;                    
+            }
+            @keyframes stroke_fill_prominent {
+                0% {
+                    stroke-dashoffset: 0;
+                    fill: seashell;
+                    stroke:lightsalmon;
+                  }
+                95% {
+                    stroke-dashoffset: -5900;
+                    fill: lightcoral;
+                    stroke:wheat;
+                } 
+                100% {
+                    stroke-dashoffset: -6000;
+                    fill: seashell;
+                    stroke:lightsalmon;
+                }               
+            }
+
+        }
+    }
+    &.extra-large{
+        width: 15rem;
+
+    }
+    &.small{
+        width: 5rem;
+    }
+
+    
+}
+
 

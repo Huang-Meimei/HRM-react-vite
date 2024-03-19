@@ -28,6 +28,7 @@ export default class LoginForm extends Component {
 
     onFinish = values =>{
         console.log("receive values from inputs ",values)
+
         const payload = {
             "email":values.email,
             "password":encrypt_pw(values.password),
@@ -40,6 +41,9 @@ export default class LoginForm extends Component {
             if(response.data.resCode ===0){
                 
             }
+            getUsers().then(res=>{
+                console.log('res getusers', res)
+            })
         }).catch(err=>{
             console.log(err)
         })

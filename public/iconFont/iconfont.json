@@ -1,0 +1,37 @@
+{
+  "id": "4429311",
+  "name": "test",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "4867106",
+      "name": "下拉",
+      "font_class": "xiala",
+      "unicode": "e65b",
+      "unicode_decimal": 58971
+    },
+    {
+      "icon_id": "7659008",
+      "name": "下拉",
+      "font_class": "xiala1",
+      "unicode": "e6aa",
+      "unicode_decimal": 59050
+    },
+    {
+      "icon_id": "8896610",
+      "name": "下拉",
+      "font_class": "xiala2",
+      "unicode": "e68f",
+      "unicode_decimal": 59023
+    },
+    {
+      "icon_id": "12323762",
+      "name": "下拉",
+      "font_class": "xiala3",
+      "unicode": "e656",
+      "unicode_decimal": 58966
+    }
+  ]
+}

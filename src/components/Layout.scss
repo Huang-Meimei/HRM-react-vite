@@ -1,0 +1,110 @@
+
+.layout {
+    display: flex;
+    justify-content: center;
+    background-color: wheat;
+
+    .logo {
+        
+        font-family: "Monoton" !important;
+        font-size:3.5rem;
+        text-align: center;
+        line-height: 5rem;
+        
+    }
+    
+}
+
+.agenda {
+    font-size:1.3rem;
+    display: flex;
+    justify-content: center;
+    color: whitesmoke;
+    background-color: lightsalmon;
+    padding: .8rem;
+    margin: 2rem 0;
+    border-radius: 0.4rem;
+    .agenda-container {
+        width: 100%;
+    }
+    .item {
+        display: flex;
+        justify-content:space-between;
+    }
+    .item > button {
+        background-color: transparent;
+        cursor: pointer;
+        border: none;
+    }
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+    padding: 1.5rem .3rem;
+    align-items:center;
+    font-size: 1rem;
+    .dropdown-container {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        margin: 0;
+        padding: 0;
+        width: 15rem;
+        .dropdown-list-container {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            position: absolute;
+            top: 2.2rem;
+            background-color: lightcoral;
+            width: 100%;
+            height: 10rem;
+            margin: .2rem 0;
+            border-radius: .5rem;
+            border:.01rem ridge pink;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            &::-webkit-scrollbar {
+                width: 5px;
+                height: 10px;
+            
+            }
+            &::-webkit-scrollbar-thumb {
+                /*滚动条里面小方块*/
+                border-radius: 5px;
+                box-shadow : inset 0 0 5px rgba(0, 0, 0, 0.2);
+                background : palevioletred;
+            }
+            &::-webkit-scrollbar-track {
+                /*滚动条里面轨道*/
+                box-shadow : inset 0 0 5px rgba(0, 0, 0, 0.2);
+                border-radius: 5px;
+                background : #ededed;
+            }
+            .dropdown-list-wrapper {
+                color: black;
+                font-size: large;
+                width: 100%;           
+                .dropdown-list-item{
+                    padding: 0.3rem 0.5rem;
+                    border-radius: .3rem;
+                    width: 100%;
+                }
+                .dropdown-list-item:hover {
+                    background-color: antiquewhite;
+                    color: tomato;
+                }
+                
+            }
+            &.folded {
+                display: none;
+            }
+
+        }
+
+
+
+    }
+}

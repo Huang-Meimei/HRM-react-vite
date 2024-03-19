@@ -6,6 +6,7 @@ const service = axios.create({
 
 service.interceptors.request.use(function (config){
     //console.log(import.meta.env.REACT_APP_API)
+    console.log('config', config)
     return config;
 }, function (error){
     return Promise.reject(error)

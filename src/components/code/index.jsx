@@ -19,7 +19,7 @@ export default class index extends Component {
         }
     }
 
-    componentWillReceiveProps(value){
+    UNSAFE_componentWillReceiveProps(value){
         this.setState({
             data:value.data,
             dataType:value.dataType

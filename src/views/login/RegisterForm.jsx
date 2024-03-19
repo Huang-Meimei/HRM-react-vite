@@ -20,10 +20,15 @@ export default class RegisterForm extends Component {
     
     onFinish = values =>{
         console.log("receive values from inputs ",values)
-        
+        let username;
+        if (values.username==undefined){
+            username=crypto.randomUUID()
+        }
         const payload = {
+            "username":username,
             "email":values.email,
-            "password":encrypt_pw(values.password)
+            "password":encrypt_pw(values.password),
+            "code":values.code,
         }
         console.log(payload)
         register(payload).then(response=>{
